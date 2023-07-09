@@ -10,6 +10,15 @@ this project is to test and implement cutting-edge AI features and methodologies
 - **Digit Recognition:** The project successfully implements a feature that recognizes digits drawn with a finger in a
   browser. This showcases the ability to interpret and understand user input in a simple, intuitive manner.
 
+## Testing the model
+
+To check the model's performance and accuracy, you can use the test_digits_model.py script. You can adjust the variables
+within the script to test different data. Execute the following command:
+
+```bash
+python test_digits_model.py
+```
+
 ## Installation and Setup
 
 ### Prerequisites
@@ -25,6 +34,14 @@ following command:
 
 ```bash
 python save_mnist.py
+```
+
+### Checking GPU Connection
+
+To check whether TensorFlow is able to establish a connection with your GPU, execute the following command:
+
+```bash
+python gpu_check.py
 ```
 
 ### Running the Project
@@ -47,5 +64,7 @@ conda env export | grep -v "prefix: " > environment.yml
 ```
 
 ## Author
+
 **Igor Bobko**
+
 - Email: iibobko@gmail.com
