@@ -1,8 +1,14 @@
-# Project Name
+# Plexus Prime
 
 ## Introduction
 
-(Your project description goes here)
+Plexus Prime is an experimental project in the field of artificial intelligence and neural networks. The main goal of
+this project is to test and implement cutting-edge AI features and methodologies.
+
+## Features
+
+- **Digit Recognition:** The project successfully implements a feature that recognizes digits drawn with a finger in a
+  browser. This showcases the ability to interpret and understand user input in a simple, intuitive manner.
 
 ## Installation and Setup
 
@@ -31,3 +37,7 @@ You can do this by using the following command:
 ```bash
 conda env export | grep -v "prefix: " > environment.yml
 ```
+
+## Author
+**Igor Bobko**
+- Email: iibobko@gmail.com
