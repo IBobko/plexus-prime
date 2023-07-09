@@ -27,6 +27,14 @@ following command:
 python save_mnist.py
 ```
 
+### Running the Project
+
+To start the Plexus Prime project, you need to run the `server.py` script. Use the following command:
+
+```bash
+python server.py
+```
+
 ### Creating an environment file
 
 Before committing your project, it's good practice to generate an `environment.yml` file. This will allow others to
