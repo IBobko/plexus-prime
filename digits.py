@@ -3,6 +3,7 @@ from tensorflow.keras.datasets import mnist
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 # Загружаем MNIST датасет
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -50,12 +51,20 @@ model.add(Dense(10, activation='softmax'))
 
 # Компилируем модель
 model.compile(loss=tf.keras.losses.categorical_crossentropy,
-              optimizer=tf.keras.optimizers.Adadelta(),
+              optimizer=tf.keras.optimizers.Adam(),  # Используем оптимизатор Adam
               metrics=['accuracy'])
 
-# Обучаем модель, увеличиваем количество эпох до 20
-model.fit(x_train, y_train,
-          batch_size=128,
+# Аугментация данных
+datagen = ImageDataGenerator(
+    rotation_range=10,  # Угол поворота изображений
+    width_shift_range=0.1,  # Сдвиг по горизонтали
+    height_shift_range=0.1,  # Сдвиг по вертикали
+    zoom_range=0.1  # Масштабирование изображений
+)
+
+# Обучаем модель с использованием аугментации данных
+model.fit(datagen.flow(x_train, y_train, batch_size=128),
+          steps_per_epoch=len(x_train) / 128,  # Количество шагов на эпоху
           epochs=20,
           verbose=1,
           validation_data=(x_test, y_test))
