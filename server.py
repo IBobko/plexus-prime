@@ -15,7 +15,7 @@ model = load_model('digits.h5')
 
 def process_digit(digit):
     digit = digit.reshape(1, 28, 28, 1)
-    return model.predict(digit)
+    return model.predict(digit)[0].tolist()
 
 
 @app.route('/predict', methods=['POST'])
@@ -24,8 +24,7 @@ def predict():
         data = request.get_json(force=True)
         digit = np.array(data)
         prediction = process_digit(digit)
-        predicted_class = np.argmax(prediction)
-        return jsonify({'prediction': int(predicted_class)})
+        return jsonify({'prediction': prediction})
     except Exception as e:
         return jsonify({'error': 'An error occurred during prediction.', 'trace': traceback.format_exc()})
 
